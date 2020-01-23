@@ -26,8 +26,16 @@ router.get('/genres/:id', (req, res) => {
             console.log('Error in get genres router:', err)
         })
     })
-
-
+// Get information for selected movie
+router.get('/selectedMovie/:id', (req, res) => {
+    const queryText = `SELECT * FROM "movies WHERE "id" = $1;`;
+    pool.query(queryText, [req.params.id])
+    .then((result) => {
+        res.send(result.rows);
+    }).catch((err) => {
+        console.log('error in selectedMovie get router', err)
+    })
+})
 
 
 
