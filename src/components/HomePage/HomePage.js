@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 
+
 class HomePage extends Component {
     // Renders the HomePage on the DOM
     componentDidMount() {
@@ -15,7 +16,12 @@ class HomePage extends Component {
     render(){
         return(
             <div className="HomePage">
-                
+                {this.props.reduxState.movies.map((movie) => {
+                    return (
+                        <p key={movie.id}>{movie.title}</p>
+                    )
+                  })
+                }
             </div>
         )
     }
