@@ -12,6 +12,7 @@ class HomePage extends Component {
     componentDidMount() {
         this.getMovies();
     }
+
     getMovies = () => {
         this.props.dispatch({ type: 'FETCH_MOVIES'});
         console.log(this.props.reduxState.movies)
@@ -23,7 +24,7 @@ class HomePage extends Component {
                 <Grid container justify="center" spacing={32}>
                     {this.props.reduxState.movies.map((movie) => {
                         return (
-                            <Grid item md key={movie.id}>
+                            <Grid item md key={movie.id}  onClick={()=>this.props.history.push(`/selectedMovie/${movie.id}`)}>
                                 <Paper>
                                     <img src={movie.poster} alt="movie poster" />
                                     <h4>{movie.title}</h4>

@@ -11,7 +11,6 @@ class SelectedMovie extends Component {
         this.props.dispatch({ type: 'FETCH_MOVIE', payload: this.props.match.params.id })
         this.props.dispatch({ type: 'FETCH_GENRES', payload: this.props.match.params.id })
     }
-
     
     render() {
         return(
