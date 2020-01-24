@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import './HomePage.css';
+import { Grid, Paper } from '@material-ui/core';
+
 
 
 
@@ -16,12 +19,20 @@ class HomePage extends Component {
     render(){
         return(
             <div className="HomePage">
-                {this.props.reduxState.movies.map((movie) => {
-                    return (
-                        <p key={movie.id}>{movie.title}</p>
-                    )
-                  })
-                }
+                <h1>Movie Sagas</h1>
+                <Grid container justify="center" spacing={32}>
+                    {this.props.reduxState.movies.map((movie) => {
+                        return (
+                            <Grid item md key={movie.id}>
+                                <Paper>
+                                    <img src={movie.poster} alt="movie poster" />
+                                    <h4>{movie.title}</h4>
+                                </Paper>
+                            </Grid>
+                        )
+                    })
+                    }
+                </Grid>
             </div>
         )
     }
