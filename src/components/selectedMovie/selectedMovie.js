@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-class selectedMovie extends Component {
-
+class SelectedMovie extends Component {
+    componentDidMount() {
+        this.getSelectedMovie();
+    }
+   
+    getSelectedMovie = () => {
+        this.props.dispatch({ type: 'FETCH_MOVIE', payload: this.props.match.params.id })
+        this.props.dispatch({ type: 'FETCH_GENRES', payload: this.props.match.params.id })
+    }
 
     
     render() {
@@ -17,4 +24,4 @@ class selectedMovie extends Component {
 const mapStateToProps = reduxState => ({
     reduxState,
 })
-export default withRouter(connect(mapStateToProps)(selectedMovie))
+export default withRouter(connect(mapStateToProps)(SelectedMovie))

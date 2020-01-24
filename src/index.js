@@ -37,7 +37,7 @@ function* selectedMovie(action) {
 }
 function* fetchGenres(action) {
     try {
-        const response = yield axios.get(`/movies/genres/${action.payload}`)
+        const response = yield axios.get(`/movies/genres/${action.payload}`);
         yield put({ type: 'SET_GENRES', payload: response.data })
     } catch (err) {
         console.log( 'error in fetchGenres fucntion in index:', err)
